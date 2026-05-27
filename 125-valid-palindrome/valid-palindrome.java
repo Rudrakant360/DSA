@@ -1,9 +1,8 @@
 class Solution {
-    public boolean helper(String s){
-        for(int i = 0;i<s.length()/2;i++){
-            if(s.charAt(i) != s.charAt(s.length()-1-i)) return false;
-        }
-        return true;
+    public boolean helper(String s,int left,int right){
+        if(left>=right) return true;
+        if(s.charAt(left)!=s.charAt(right)) return false;
+        return helper(s,left+1,right-1);
     }
     public boolean isPalindrome(String s) {
     s = s.toLowerCase();
@@ -14,7 +13,7 @@ class Solution {
            str+=ch;
         }
     }
-    return helper(str);
+    return helper(str,0,str.length()-1);
        
     }
 }
